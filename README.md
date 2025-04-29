@@ -1,40 +1,41 @@
 # Planetary Image Feature Counter
 
-A web application for counting and analyzing features in satellite imagery using Microsoft's Planetary Computer API.
+A web application that allows users to analyze satellite imagery for specific features like vegetation, water bodies, urban areas, and clouds using Microsoft's Planetary Computer API.
 
 ## Features
 
-- Search for satellite images from various collections (Sentinel-2, Landsat, NAIP)
-- Specify search parameters like bounding box and limit
-- Browse and select images from search results
-- Analyze images to count different types of features:
-  - Vegetation coverage
-  - Water bodies
-  - Urban areas
-  - Cloud coverage
-- Visualize detected features with color highlighting
-- Display statistics about feature count and area percentage
+- Search for satellite imagery from various collections (Sentinel-2, Landsat, NAIP)
+- Upload your own satellite images for analysis
+- Choose from sample satellite images
+- Analyze images for various features:
+  - Vegetation (health, coverage, NDVI)
+  - Water bodies (depth, clarity, shoreline complexity)
+  - Urban areas (density, development patterns)
+  - Cloud coverage (thickness, usability)
+- Visual representation of analysis results
+- Detailed statistics and metrics
+- Key findings and practical applications
 
-## Technologies Used
+## Tech Stack
 
-- **Backend**: Node.js, Express.js
 - **Frontend**: HTML, CSS, JavaScript
-- **Image Processing**: Sharp, Jimp
-- **Data Source**: Microsoft Planetary Computer API
+- **Backend**: Node.js, Express
+- **Image Processing**: Jimp, Sharp
+- **API Integration**: Microsoft Planetary Computer
 
-## Getting Started
+## Installation and Setup
 
 ### Prerequisites
 
 - Node.js (v14 or higher)
-- npm or yarn
+- npm (v6 or higher)
 
-### Installation
+### Local Development
 
 1. Clone the repository:
 
    ```
-   git clone https://github.com/yourusername/planetary-image-counter.git
+   git clone https://github.com/your-username/planetary-image-counter.git
    cd planetary-image-counter
    ```
 
@@ -44,18 +45,13 @@ A web application for counting and analyzing features in satellite imagery using
    npm install
    ```
 
-3. Create a `.env` file in the root directory with the following contents:
+3. Create a `.env` file with your configuration:
 
    ```
-   # Microsoft Planetary Computer API
-   PLANETARY_COMPUTER_API_URL=https://planetarycomputer.microsoft.com/api/stac/v1
-
-   # Server Configuration
-   PORT=3000
-
-   # Optional: If you have a Planetary Computer API key
-   # PC_SDK_SUBSCRIPTION_KEY=your_key_here
+   cp env.example .env
    ```
+
+   Then edit the `.env` file with your API keys and settings.
 
 4. Start the development server:
 
@@ -63,37 +59,54 @@ A web application for counting and analyzing features in satellite imagery using
    npm run dev
    ```
 
-5. Open your browser and navigate to [http://localhost:3000](http://localhost:3000)
+5. Open your browser and navigate to `http://localhost:3000`
 
-## Usage
+## Deploying to DigitalOcean App Platform
 
-1. Select a satellite image collection from the dropdown
-2. Enter a bounding box (or use the default San Francisco example)
-3. Click "Search" or "Get Sample Image" to browse available imagery
-4. Click on an image to select it for analysis
-5. Choose the feature type you want to detect
-6. Click "Analyze Image" to process and display results
+### Prerequisites
 
-## How It Works
+1. A [DigitalOcean](https://www.digitalocean.com/) account
+2. A GitHub repository with your code
+3. [doctl](https://docs.digitalocean.com/reference/doctl/how-to/install/) installed (optional, for CLI deployment)
 
-1. The application connects to Microsoft's Planetary Computer API to search for satellite imagery
-2. When you select an image, it is downloaded and processed on the server
-3. The image processing algorithms analyze pixel values to identify different features based on spectral characteristics
-4. Results are visualized with color highlighting and statistics are calculated
+### Deployment Steps
 
-## Future Improvements
+#### Option 1: Using the DigitalOcean Console
 
-- Add more sophisticated feature detection algorithms
-- Support for custom feature definitions
-- Time series analysis of feature changes
-- Integration with machine learning models for more accurate detection
-- Support for downloading results and processed images
+1. Log in to your DigitalOcean account
+2. Go to the App Platform section
+3. Click "Create App"
+4. Connect your GitHub account and select your repository
+5. Configure the app:
+   - Choose the branch to deploy
+   - Specify "npm start" as the run command
+   - Set environment variables from your .env file
+6. Select your plan (Basic or Professional)
+7. Review and launch your app
+
+#### Option 2: Using the Configuration File
+
+The repository includes a `.do/app.yaml` file for DigitalOcean App Platform configuration.
+
+1. Update the GitHub repo information in `.do/app.yaml` to point to your repository
+2. Use the doctl CLI to deploy:
+   ```
+   doctl apps create --spec .do/app.yaml
+   ```
+
+### Setting Environment Variables
+
+After deployment, set up these environment variables in the DigitalOcean App Platform Console:
+
+- `PORT`: 8080 (DigitalOcean default)
+- `PLANETARY_COMPUTER_API_KEY`: Your Microsoft Planetary Computer API key
 
 ## License
 
-This project is licensed under the ISC License.
+This project is licensed under the ISC License - see the LICENSE file for details.
 
 ## Acknowledgments
 
-- [Microsoft Planetary Computer](https://planetarycomputer.microsoft.com/) for providing access to satellite data
-- [Sharp](https://sharp.pixelplumbing.com/) and [Jimp](https://github.com/oliver-moran/jimp) for image processing capabilities
+- Microsoft Planetary Computer for providing access to satellite imagery
+- Sentinel-2, Landsat, and NAIP for the satellite data
+- All contributors and supporters of the project
