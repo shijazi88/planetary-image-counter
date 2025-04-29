@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planetary Image Feature Counter</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- Leaflet CSS for maps -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <!-- Leaflet Draw Plugin CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="language-switcher">
+        <button id="lang-en" class="lang-btn active" data-lang="en">
+          English
+        </button>
+        <button id="lang-ar" class="lang-btn" data-lang="ar">العربية</button>
+      </div>
+
+      <div class="branding">
+        <h1>
+          <span class="company-name">Promatrix</span>
+          <span data-lang-key="appTitle">Planetary Image Feature Counter</span>
+        </h1>
+      </div>
+      <p data-lang-key="appDescription">
+        Count and analyze features in satellite imagery using Microsoft's
+        Planetary Computer
+      </p>
+    </header>
+
+    <main>
+      <section id="features-overview">
+        <h2 data-lang-key="featuresTitle">
+          Advanced Satellite Imagery Analysis
+        </h2>
+        <p data-lang-key="featuresDescription">
+          Our powerful analyzers detect and measure features in satellite
+          imagery with sophisticated algorithms designed for environmental
+          monitoring, urban planning, and resource management.
+        </p>
+
+        <div class="feature-cards">
+          <div class="feature-card">
+            <h3 data-lang-key="vegetationTitle">Vegetation Analysis</h3>
+            <p data-lang-key="vegetationDesc">
+              Detect vegetation health, density, and stress levels by analyzing
+              spectral signatures. Useful for:
+            </p>
+            <ul>
+              <li data-lang-key="vegetationPoint1">Crop health monitoring</li>
+              <li data-lang-key="vegetationPoint2">Deforestation tracking</li>
+              <li data-lang-key="vegetationPoint3">Environmental assessment</li>
+              <li data-lang-key="vegetationPoint4">Biomass estimation</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h3 data-lang-key="waterTitle">Water Analysis</h3>
+            <p data-lang-key="waterDesc">
+              Identify and classify water bodies by depth, clarity, and
+              shoreline complexity. Benefits include:
+            </p>
+            <ul>
+              <li data-lang-key="waterPoint1">Flood monitoring</li>
+              <li data-lang-key="waterPoint2">Water resource management</li>
+              <li data-lang-key="waterPoint3">Coastal change analysis</li>
+              <li data-lang-key="waterPoint4">Water quality assessment</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h3 data-lang-key="urbanTitle">Urban Analysis</h3>
+            <p data-lang-key="urbanDesc">
+              Detect built-up areas and classify urban development patterns.
+              Applications include:
+            </p>
+            <ul>
+              <li data-lang-key="urbanPoint1">Urban expansion monitoring</li>
+              <li data-lang-key="urbanPoint2">Infrastructure planning</li>
+              <li data-lang-key="urbanPoint3">Population density estimation</li>
+              <li data-lang-key="urbanPoint4">Land use classification</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h3 data-lang-key="cloudTitle">Cloud Analysis</h3>
+            <p data-lang-key="cloudDesc">
+              Measure cloud coverage and types to determine image usability.
+              Important for:
+            </p>
+            <ul>
+              <li data-lang-key="cloudPoint1">Image quality assessment</li>
+              <li data-lang-key="cloudPoint2">Time series analysis</li>
+              <li data-lang-key="cloudPoint3">Weather pattern monitoring</li>
+              <li data-lang-key="cloudPoint4">Data preprocessing</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="upload-section">
+        <h2 data-lang-key="uploadTitle">Upload or Select an Image</h2>
+
+        <div class="tabs">
+          <button
+            class="tab-btn active"
+            data-tab="upload-tab"
+            data-lang-key="uploadTabBtn"
+          >
+            Upload Image
+          </button>
+          <button class="tab-btn" data-tab="api-tab" data-lang-key="apiTabBtn">
+            Planetary Computer API
+          </button>
+          <button
+            class="tab-btn"
+            data-tab="samples-tab"
+            data-lang-key="sampleTabBtn"
+          >
+            Sample Images
+          </button>
+        </div>
+
+        <div id="upload-tab" class="tab-content active">
+          <div class="upload-container">
+            <div class="file-drop-area">
+              <span class="file-message" data-lang-key="dropAreaMessage">
+                Drag & drop files here or click to browse
+              </span>
+              <input
+                type="file"
+                id="file-upload"
+                accept="image/*"
+                class="file-input"
+              />
+            </div>
+            <div id="upload-preview" class="hidden">
+              <h3 data-lang-key="selectedFile">Selected File</h3>
+              <div class="preview-container">
+                <img id="upload-image-preview" alt="Image preview" />
+                <div class="file-info">
+                  <p id="file-name"></p>
+                  <p id="file-size"></p>
+                </div>
+              </div>
+              <button id="upload-btn" data-lang-key="uploadBtn">
+                Upload Image
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="api-tab" class="tab-content">
+          <div class="form-group">
+            <label for="collections" data-lang-key="collectionLabel"
+              >Collection:</label
+            >
+            <select id="collections">
+              <option value="sentinel-2-l2a">Sentinel-2 L2A</option>
+              <option value="landsat-8-c2-l2">
+                Landsat 8 Collection 2 Level-2
+              </option>
+              <option value="naip">NAIP</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+
+          <!-- BBox Selection Area -->
+          <div class="form-group">
+            <label>Bounding Box Selection:</label>
+            <div class="bbox-selection-container">
+              <div class="bbox-toggle-buttons">
+                <button
+                  type="button"
+                  id="manual-entry-btn"
+                  class="bbox-toggle-btn active"
+                >
+                  Manual Entry
+                </button>
+                <button type="button" id="draw-map-btn" class="bbox-toggle-btn">
+                  Draw on Map
+                </button>
+              </div>
+
+              <div id="manual-entry-container">
+                <div class="bbox-input-grid">
+                  <div class="bbox-input-row">
+                    <div class="bbox-input-cell"></div>
+                    <div class="bbox-input-cell">
+                      <input
+                        type="number"
+                        id="bbox-north"
+                        class="bbox-input"
+                        placeholder="North"
+                        step="0.000001"
+                      />
+                    </div>
+                    <div class="bbox-input-cell"></div>
+                  </div>
+                  <div class="bbox-input-row">
+                    <div class="bbox-input-cell">
+                      <input
+                        type="number"
+                        id="bbox-west"
+                        class="bbox-input"
+                        placeholder="West"
+                        step="0.000001"
+                      />
+                    </div>
+                    <div class="bbox-input-cell"></div>
+                    <div class="bbox-input-cell">
+                      <input
+                        type="number"
+                        id="bbox-east"
+                        class="bbox-input"
+                        placeholder="East"
+                        step="0.000001"
+                      />
+                    </div>
+                  </div>
+                  <div class="bbox-input-row">
+                    <div class="bbox-input-cell"></div>
+                    <div class="bbox-input-cell">
+                      <input
+                        type="number"
+                        id="bbox-south"
+                        class="bbox-input"
+                        placeholder="South"
+                        step="0.000001"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="map-bbox-input" class="bbox-input-method hidden">
+                <div class="form-group">
+                  <label data-lang-key="mapInstructions">
+                    Use the drawing tools to create a rectangle on the map:
+                  </label>
+                  <div id="map-container"></div>
+                  <p class="help-text" data-lang-key="mapHelp">
+                    Click the rectangle icon to start drawing, or clear to
+                    remove your selection.
+                  </p>
+                  <div id="selected-bbox-display">
+                    <p data-lang-key="selectedBbox">Selected Area:</p>
+                    <code id="bbox-coordinates">None</code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="limit" data-lang-key="limitLabel">Limit:</label>
+            <input type="number" id="limit" value="5" min="1" max="20" />
+          </div>
+          <button id="search-btn" data-lang-key="searchBtn">Search</button>
+          <button id="sample-btn" data-lang-key="getSampleBtn">
+            Get Sample Image
+          </button>
+        </div>
+
+        <div id="samples-tab" class="tab-content">
+          <div class="samples-container">
+            <p data-lang-key="samplesDesc">
+              Select one of our sample images to analyze:
+            </p>
+            <div id="samples-grid" class="image-grid">
+              <p class="loading-text" data-lang-key="loadingSamples">
+                Loading sample images...
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="results-section" class="hidden">
+        <h2 data-lang-key="resultsTitle">Search Results</h2>
+        <div id="results-count"></div>
+        <div id="image-grid"></div>
+      </section>
+
+      <section id="analysis-section" class="hidden">
+        <h2 data-lang-key="analysisTitle">Feature Analysis</h2>
+        <div class="form-group">
+          <label for="feature-type" data-lang-key="featureTypeLabel"
+            >Feature Type:</label
+          >
+          <select id="feature-type">
+            <option value="vegetation" data-lang-key="vegetationOption">
+              Vegetation
+            </option>
+            <option value="water" data-lang-key="waterOption">Water</option>
+            <option value="urban" data-lang-key="urbanOption">
+              Urban Areas
+            </option>
+            <option value="clouds" data-lang-key="cloudsOption">Clouds</option>
+          </select>
+          <div id="feature-description">
+            <p
+              id="vegetation-description"
+              class="analyzer-description"
+              data-lang-key="vegetationDescription"
+            >
+              Analyzes vegetation health and coverage in satellite imagery.
+              Detects vegetation based on spectral signatures and assesses its
+              health and density by calculating a pseudo-NDVI index.
+            </p>
+            <p
+              id="water-description"
+              class="analyzer-description hidden"
+              data-lang-key="waterDescription"
+            >
+              Analyzes water bodies in satellite imagery. Detects water features
+              such as oceans, lakes, rivers, and ponds based on spectral
+              characteristics, classifying them by depth and clarity.
+            </p>
+            <p
+              id="urban-description"
+              class="analyzer-description hidden"
+              data-lang-key="urbanDescription"
+            >
+              Analyzes built-up areas in satellite imagery. Detects buildings,
+              roads, industrial zones, and other urban structures based on
+              spectral and spatial characteristics, classifying development
+              patterns.
+            </p>
+            <p
+              id="clouds-description"
+              class="analyzer-description hidden"
+              data-lang-key="cloudDescription"
+            >
+              Analyzes cloud coverage in satellite imagery. Detects clouds based
+              on their high brightness and spectral characteristics, classifying
+              them as thick or thin and assessing image usability.
+            </p>
+          </div>
+        </div>
+        <button id="analyze-btn" data-lang-key="analyzeBtn">
+          Analyze Image
+        </button>
+
+        <div id="analysis-results" class="hidden">
+          <div class="result-cards">
+            <div class="card">
+              <h3 data-lang-key="originalImageTitle">Original Image</h3>
+              <img id="original-image" alt="Original satellite image" />
+            </div>
+            <div class="card">
+              <h3 data-lang-key="visualizationTitle">Feature Visualization</h3>
+              <img id="visualization-image" alt="Feature visualization" />
+            </div>
+          </div>
+          <div class="stats-card">
+            <h3 data-lang-key="statisticsTitle">Statistics</h3>
+            <div id="stats-container"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        <span data-lang-key="footerText">Developed by</span>
+        <strong>Promatrix</strong>
+        <span data-lang-key="footerText2"
+          >using Microsoft's Planetary Computer API. This is a technology
+          demonstration project.</span
+        >
+      </p>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="app.js"></script>
+
+    <!-- Leaflet JS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <!-- Leaflet Draw Plugin -->
+    <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+
+    <!-- Map Initialization Script -->
+    <script src="map.js"></script>
+  </body>
+</html>

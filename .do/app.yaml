@@ -1,0 +1,17 @@
+name: planetary-image-counter
+services:
+  - name: web
+    github:
+      branch: main
+      deploy_on_push: true
+      repo: YOUR_GITHUB_USERNAME/planetary-image-counter
+    source_dir: /
+    http_port: 3000
+    instance_count: 1
+    instance_size_slug: basic-xs
+    routes:
+      - path: /
+    envs:
+      - key: NODE_ENV
+        scope: RUN_TIME
+        value: production

@@ -1,0 +1,29 @@
+# Additional Sample Images
+
+These URLs provide additional satellite images that can be downloaded for use with the analyzers:
+
+## Vegetation Analysis
+- NASA Earth Observatory, Amazon Deforestation: https://eoimages.gsfc.nasa.gov/images/imagerecords/145000/145888/mato_etm_2000_2022_lrg.jpg
+- European Space Agency, Agricultural Areas: https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2014/10/agricultural_fields/15067599-1-eng-GB/Agricultural_fields_pillars.jpg
+
+## Water Analysis
+- NASA Earth Observatory, Lake Mead Drought: https://eoimages.gsfc.nasa.gov/images/imagerecords/150000/150111/lakemead_oli_2022209_lrg.jpg
+- European Space Agency, Venice Lagoon: https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2019/06/venice/19421219-2-eng-GB/Venice_pillars.jpg
+
+## Urban Analysis
+- NASA Earth Observatory, Las Vegas Urban Growth: https://eoimages.gsfc.nasa.gov/images/imagerecords/4000/4615/las_vegas_big.jpg
+- European Space Agency, Dubai Development: https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2022/05/dubai_united_arab_emirates/24010752-1-eng-GB/Dubai_United_Arab_Emirates_pillars.jpg
+
+## Cloud Analysis
+- NASA MODIS, Tropical Cyclone: https://eoimages.gsfc.nasa.gov/images/imagerecords/150000/150115/elida_tmo_2020227_lrg.jpg
+- European Space Agency, Cloud Formations: https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2017/08/von_karman_vortices/17025338-1-eng-GB/Von_Karman_vortices_pillars.jpg
+
+## Deforestation Analysis
+- NASA Earth Observatory, Amazon Deforestation: https://eoimages.gsfc.nasa.gov/images/imagerecords/148000/148071/bolivia_oli_2022218_lrg.jpg
+- Global Forest Watch, Indonesia Forest Loss: https://wri-datalab.s3.amazonaws.com/resourcewatch/temp/gfw-annual-tree-cover-loss-by-driver/mining-Brazil-desktop_1.png
+
+## Mixed Features (Multiple types in one image)
+- NASA Earth Observatory, San Francisco Bay Area: https://eoimages.gsfc.nasa.gov/images/imagerecords/147000/147268/sanfrancisco_oli_2019228_lrg.jpg
+- European Space Agency, Nile Delta: https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2020/04/the_nile_delta/21916642-1-eng-GB/The_Nile_Delta_pillars.jpg
+
+To use these images, download them and upload through the application's interface, or save them to the public/samples directory for direct access. 
