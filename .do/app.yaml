@@ -6,7 +6,7 @@ services:
       deploy_on_push: true
       repo: YOUR_GITHUB_USERNAME/planetary-image-counter
     source_dir: /
-    http_port: 3000
+    http_port: 8080
     instance_count: 1
     instance_size_slug: basic-xs
     routes:
@@ -15,3 +15,18 @@ services:
       - key: NODE_ENV
         scope: RUN_TIME
         value: production
+      - key: PORT
+        scope: RUN_TIME
+        value: "8080"
+      - key: PLANETARY_COMPUTER_API_KEY
+        scope: RUN_TIME
+        value: "${PLANETARY_COMPUTER_API_KEY}"
+        type: SECRET
+    health_check:
+      http_path: /
+      port: 8080
+      initial_delay_seconds: 10
+      period_seconds: 30
+      timeout_seconds: 5
+      success_threshold: 1
+      failure_threshold: 3
