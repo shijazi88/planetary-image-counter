@@ -34,6 +34,19 @@ class WaterAnalyzer extends BaseAnalyzer {
       let turbidWaterCount = 0;
       let waterBodyEdgePixels = 0;
 
+      // New counters for enhanced analysis
+      let blueSum = 0;
+      let greenSum = 0;
+      let redSum = 0;
+      let brightnessSum = 0;
+      let turbiditySum = 0;
+      let tempEstimationSum = 0;
+
+      // Water temperature categories
+      let coolWaterCount = 0;
+      let moderateWaterCount = 0;
+      let warmWaterCount = 0;
+
       // Create a copy for visualization
       const visualizationImage = image.clone();
 
@@ -71,6 +84,21 @@ class WaterAnalyzer extends BaseAnalyzer {
           waterCount++;
           waterPixelMap[y][x] = true;
 
+          // Collect color data for water quality analysis
+          blueSum += b;
+          greenSum += g;
+          redSum += r;
+          brightnessSum += brightness;
+
+          // Calculate turbidity approximation (higher green relative to blue indicates more turbidity)
+          const turbidity = (g / (b + 0.01)) * (brightness / 255);
+          turbiditySum += turbidity;
+
+          // Estimate relative water temperature (higher red values tend to correlate with warmer water)
+          // This is a simplified approximation as true temperature would require thermal bands
+          const tempEstimation = (r / 255) * 0.7 + (brightness / 255) * 0.3;
+          tempEstimationSum += tempEstimation;
+
           // Classify water types
           if (brightness < 80 && b > 40) {
             // Deep/clear water (darker blue)
@@ -80,6 +108,8 @@ class WaterAnalyzer extends BaseAnalyzer {
               x,
               y
             );
+            // Deep water tends to be cooler
+            coolWaterCount++;
           } else if (blueToRedRatio > 1.5 && brightness < 150) {
             // Shallow/clear water (medium blue)
             shallowWaterCount++;
@@ -88,6 +118,10 @@ class WaterAnalyzer extends BaseAnalyzer {
               x,
               y
             );
+            // Assess temperature based on red component
+            if (r < 60) coolWaterCount++;
+            else if (r < 100) moderateWaterCount++;
+            else warmWaterCount++;
           } else {
             // Turbid/sediment-laden water (light blue-green)
             turbidWaterCount++;
@@ -96,6 +130,9 @@ class WaterAnalyzer extends BaseAnalyzer {
               x,
               y
             );
+            // Turbid water often appears warmer
+            if (r > 120) warmWaterCount++;
+            else moderateWaterCount++;
           }
         } else {
           // Non-water (darkened original)
@@ -145,6 +182,39 @@ class WaterAnalyzer extends BaseAnalyzer {
       const turbidWaterPercentage =
         waterCount > 0 ? (turbidWaterCount / waterCount) * 100 : 0;
 
+      // Calculate temperature percentages
+      const coolWaterPercentage =
+        waterCount > 0 ? (coolWaterCount / waterCount) * 100 : 0;
+      const moderateWaterPercentage =
+        waterCount > 0 ? (moderateWaterCount / waterCount) * 100 : 0;
+      const warmWaterPercentage =
+        waterCount > 0 ? (warmWaterCount / waterCount) * 100 : 0;
+
+      // Calculate average color values for water
+      const avgBlue = waterCount > 0 ? blueSum / waterCount : 0;
+      const avgGreen = waterCount > 0 ? greenSum / waterCount : 0;
+      const avgRed = waterCount > 0 ? redSum / waterCount : 0;
+      const avgBrightness = waterCount > 0 ? brightnessSum / waterCount : 0;
+      const avgTurbidity = waterCount > 0 ? turbiditySum / waterCount : 0;
+      const avgTempEstimation =
+        waterCount > 0 ? tempEstimationSum / waterCount : 0;
+
+      // Water quality index (0-100 scale)
+      // Higher values indicate better quality, based on clarity and turbidity
+      const waterQualityIndex =
+        waterCount > 0
+          ? Math.min(
+              100,
+              Math.max(
+                0,
+                100 - avgTurbidity * 100 - turbidWaterPercentage * 0.5
+              )
+            )
+          : 0;
+
+      // Normalize temperature estimation to a 0-100 scale
+      const temperatureIndex = avgTempEstimation * 100;
+
       // Estimate shoreline length - the edge pixels count approximates the shoreline length
       // This is a relative measure, not absolute
       const shorelineIndex =
@@ -178,6 +248,32 @@ class WaterAnalyzer extends BaseAnalyzer {
         waterBodyType = "Small Water Bodies";
       }
 
+      // More detailed water body classification
+      let detailedWaterType = "";
+      if (waterBodyType === "Ocean or Large Lake") {
+        if (turbidWaterPercentage > 40) {
+          detailedWaterType = "Coastal Waters";
+        } else if (deepWaterPercentage > 70) {
+          detailedWaterType = "Open Ocean";
+        } else {
+          detailedWaterType = "Large Lake";
+        }
+      } else if (waterBodyType === "Lake or Large Reservoir") {
+        if (shorelineIndex > 1.2) {
+          detailedWaterType = "Reservoir";
+        } else if (turbidWaterPercentage > 50) {
+          detailedWaterType = "Eutrophic Lake";
+        } else {
+          detailedWaterType = "Oligotrophic Lake";
+        }
+      } else if (waterBodyType === "River or Stream Network") {
+        if (turbidWaterPercentage > 60) {
+          detailedWaterType = "Sediment-laden River";
+        } else {
+          detailedWaterType = "Clear Stream Network";
+        }
+      }
+
       // Determine water clarity category
       let clarityCategory = "";
       if (deepWaterPercentage > 60) {
@@ -186,6 +282,38 @@ class WaterAnalyzer extends BaseAnalyzer {
         clarityCategory = "Turbid";
       } else {
         clarityCategory = "Mixed";
+      }
+
+      // Water temperature category
+      let temperatureCategory = "";
+      if (coolWaterPercentage > 50) {
+        temperatureCategory = "Cool";
+      } else if (warmWaterPercentage > 50) {
+        temperatureCategory = "Warm";
+      } else {
+        temperatureCategory = "Moderate";
+      }
+
+      // Potential seasonal characteristics
+      let seasonalCharacteristics = "";
+      if (turbidWaterPercentage > 60 && temperatureIndex > 50) {
+        seasonalCharacteristics = "Summer/Rainy Season Pattern";
+      } else if (coolWaterPercentage > 60 && deepWaterPercentage > 50) {
+        seasonalCharacteristics = "Winter/Cold Season Pattern";
+      } else if (moderateWaterPercentage > 50 && shallowWaterPercentage > 60) {
+        seasonalCharacteristics = "Spring/Fall Transition Pattern";
+      } else {
+        seasonalCharacteristics = "Indeterminate Season";
+      }
+
+      // Pollution risk assessment
+      let pollutionRiskCategory = "";
+      if (waterQualityIndex > 80) {
+        pollutionRiskCategory = "Low Risk";
+      } else if (waterQualityIndex > 50) {
+        pollutionRiskCategory = "Moderate Risk";
+      } else {
+        pollutionRiskCategory = "High Risk";
       }
 
       // Create visualization image buffer
@@ -228,12 +356,29 @@ class WaterAnalyzer extends BaseAnalyzer {
       // Shoreline complexity insights
       if (shorelineIndex > 2.0) {
         explanation +=
-          "The water body has a complex shoreline with many inlets and peninsulas.";
+          "The water body has a complex shoreline with many inlets and peninsulas. ";
       } else if (shorelineIndex > 1.0) {
-        explanation += "The water body has a moderately complex shoreline.";
+        explanation += "The water body has a moderately complex shoreline. ";
       } else if (waterPercentage > 5) {
-        explanation += "The water body has a relatively simple shoreline.";
+        explanation += "The water body has a relatively simple shoreline. ";
       }
+
+      // Water quality insights
+      explanation += `The estimated water quality index is ${waterQualityIndex.toFixed(
+        1
+      )} out of 100, `;
+      if (waterQualityIndex > 75) {
+        explanation += "suggesting good water quality with low turbidity. ";
+      } else if (waterQualityIndex > 50) {
+        explanation += "indicating moderate water quality. ";
+      } else {
+        explanation +=
+          "suggesting poor water quality that may require attention. ";
+      }
+
+      // Temperature insights
+      explanation += `Water temperature analysis suggests predominantly ${temperatureCategory.toLowerCase()} water temperatures `;
+      explanation += `with patterns consistent with ${seasonalCharacteristics.toLowerCase()}.`;
 
       return {
         featureType: "water",
@@ -251,6 +396,19 @@ class WaterAnalyzer extends BaseAnalyzer {
         coverageCategory,
         waterBodyType,
         clarityCategory,
+
+        // New metrics
+        detailedWaterType,
+        waterQualityIndex: waterQualityIndex.toFixed(1),
+        temperatureIndex: temperatureIndex.toFixed(1),
+        temperatureCategory,
+        coolWaterPercentage: coolWaterPercentage.toFixed(2),
+        moderateWaterPercentage: moderateWaterPercentage.toFixed(2),
+        warmWaterPercentage: warmWaterPercentage.toFixed(2),
+        seasonalCharacteristics,
+        pollutionRiskCategory,
+        avgTurbidity: avgTurbidity.toFixed(3),
+
         visualizationImageBase64: `data:image/png;base64,${outputBuffer.toString(
           "base64"
         )}`,

@@ -51,11 +51,71 @@ async function processImage(url) {
 /**
  * Count features in an image
  * @param {Buffer} imageBuffer - Processed image buffer
- * @param {string} featureType - Type of feature to count ('water', 'vegetation', 'urban', 'clouds')
+ * @param {string} featureType - Type of feature to count ('water', 'vegetation', 'urban', 'clouds', 'landUse')
  * @returns {Promise<Object>} - Object containing feature counts and statistics
  */
 async function countFeatures(imageBuffer, featureType = "vegetation") {
   try {
+    console.log(`Starting analysis with feature type: ${featureType}`);
+
+    // Use specialized analyzers for certain feature types
+    if (featureType === "landUse") {
+      try {
+        const LandUseClassifier = require("../analyzers/landUseClassifier");
+        console.log("LandUseClassifier imported successfully");
+
+        const classifier = new LandUseClassifier();
+        console.log("LandUseClassifier instantiated successfully");
+
+        const result = await classifier.analyze(imageBuffer);
+        console.log("LandUseClassifier analysis completed successfully");
+
+        return result;
+      } catch (error) {
+        console.error(
+          "Detailed error in Land Use Classification:",
+          error.message
+        );
+        console.error("Error stack:", error.stack);
+        throw new Error(`Land Use Classification failed: ${error.message}`);
+      }
+    } else if (featureType === "water") {
+      try {
+        const WaterAnalyzer = require("../analyzers/waterAnalyzer");
+        console.log("WaterAnalyzer imported successfully");
+
+        const analyzer = new WaterAnalyzer();
+        console.log("WaterAnalyzer instantiated successfully");
+
+        const result = await analyzer.analyze(imageBuffer);
+        console.log("WaterAnalyzer analysis completed successfully");
+
+        return result;
+      } catch (error) {
+        console.error("Detailed error in Water Analysis:", error.message);
+        console.error("Error stack:", error.stack);
+        throw new Error(`Water Analysis failed: ${error.message}`);
+      }
+    } else if (featureType === "vegetation") {
+      try {
+        const VegetationAnalyzer = require("../analyzers/vegetationAnalyzer");
+        console.log("VegetationAnalyzer imported successfully");
+
+        const analyzer = new VegetationAnalyzer();
+        console.log("VegetationAnalyzer instantiated successfully");
+
+        const result = await analyzer.analyze(imageBuffer);
+        console.log("VegetationAnalyzer analysis completed successfully");
+
+        return result;
+      } catch (error) {
+        console.error("Detailed error in Vegetation Analysis:", error.message);
+        console.error("Error stack:", error.stack);
+        throw new Error(`Vegetation Analysis failed: ${error.message}`);
+      }
+    }
+
+    // For other feature types, use the generic threshold approach
     // Load the image with Jimp for analysis
     const image = await Jimp.read(imageBuffer);
 
@@ -70,14 +130,6 @@ async function countFeatures(imageBuffer, featureType = "vegetation") {
 
     // Define threshold functions for different feature types
     const thresholdFunctions = {
-      water: (r, g, b) => {
-        // Water typically has higher blue than green and red
-        return b > r * 1.2 && b > g * 1.1;
-      },
-      vegetation: (r, g, b) => {
-        // Simple NDVI-like detection: vegetation has higher green than red and blue
-        return g > r * 1.15 && g > b * 1.15;
-      },
       urban: (r, g, b) => {
         // Urban areas often have similar values across all bands
         const avg = (r + g + b) / 3;
@@ -91,6 +143,15 @@ async function countFeatures(imageBuffer, featureType = "vegetation") {
       clouds: (r, g, b) => {
         // Clouds typically have high values across all bands
         return r > 220 && g > 220 && b > 220;
+      },
+      // Fallback threshold functions for water and vegetation in case specialized analyzers fail
+      water: (r, g, b) => {
+        // Water typically has higher blue than green and red
+        return b > r * 1.2 && b > g * 1.1;
+      },
+      vegetation: (r, g, b) => {
+        // Simple NDVI-like detection: vegetation has higher green than red and blue
+        return g > r * 1.15 && g > b * 1.15;
       },
     };
 

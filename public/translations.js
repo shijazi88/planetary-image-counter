@@ -2,8 +2,8 @@
 const keyFindingsTranslations = {
   // Vegetation findings
   vegetationCoverage: {
-    en: "The image shows {percentage}% vegetation coverage, categorized as {category}.",
-    ar: "تُظهر الصورة تغطية نباتية بنسبة {percentage}%، مصنفة كـ{category}.",
+    en: "The image shows {percentage}% vegetation coverage, which is {category}.",
+    ar: "تُظهر الصورة تغطية نباتية بنسبة {percentage}%، وهي {category}.",
   },
   vegetationHealth: {
     en: "Overall vegetation health is classified as {status}.",
@@ -104,12 +104,42 @@ const keyFindingsTranslations = {
     ar: "يتكون تكوين السحب من {thick}% سحب سميكة/معتمة و{thin}% سحب رقيقة/شبه شفافة.",
   },
   cloudShadows: {
-    en: "Cloud shadows cover {percentage}% of the image.",
-    ar: "تغطي ظلال السحب {percentage}% من الصورة.",
+    en: "Cloud shadows cover approximately {percentage}% of the image.",
+    ar: "تغطي ظلال السحب حوالي {percentage}% من الصورة.",
   },
   imageUsability: {
     en: "This image has {usability} usability for land analysis based on cloud coverage.",
     ar: "هذه الصورة ذات قابلية {usability} للاستخدام في تحليل الأراضي بناءً على تغطية السحب.",
+  },
+
+  // Land Use findings
+  landUseDominant: {
+    en: "The dominant land use type is {type} at {percentage}% of the total area.",
+    ar: "نوع استخدام الأراضي السائد هو {type} بنسبة {percentage}% من المساحة الإجمالية.",
+  },
+  landUseDiversity: {
+    en: "The land use diversity score is {score} (0-1 scale, higher values indicate greater diversity).",
+    ar: "درجة تنوع استخدام الأراضي هي {score} (مقياس 0-1، تشير القيم الأعلى إلى تنوع أكبر).",
+  },
+  landUseUrban: {
+    en: "Urban/built-up areas cover {percentage}% of the image.",
+    ar: "تغطي المناطق الحضرية/المبنية {percentage}% من الصورة.",
+  },
+  landUseAgriculture: {
+    en: "Agricultural land covers {percentage}% of the image.",
+    ar: "تغطي الأراضي الزراعية {percentage}% من الصورة.",
+  },
+  landUseForest: {
+    en: "Forest and natural vegetation cover {percentage}% of the image.",
+    ar: "تغطي الغابات والغطاء النباتي الطبيعي {percentage}% من الصورة.",
+  },
+  landUseWater: {
+    en: "Water bodies cover {percentage}% of the image.",
+    ar: "تغطي المسطحات المائية {percentage}% من الصورة.",
+  },
+  landUseBarren: {
+    en: "Barren land covers {percentage}% of the image.",
+    ar: "تغطي الأراضي الجرداء {percentage}% من الصورة.",
   },
 
   // Generic findings
@@ -232,6 +262,57 @@ const applicationInsightsTranslations = {
   defaultApplications: {
     en: "This analysis provides insights that can support environmental monitoring, resource management, and urban planning applications.",
     ar: "يوفر هذا التحليل رؤى يمكن أن تدعم تطبيقات المراقبة البيئية، وإدارة الموارد، والتخطيط الحضري.",
+  },
+
+  // Land Use applications
+  landUseGeneric: {
+    en: "This land use classification can support urban planning, environmental management, agricultural monitoring, and sustainable development initiatives.",
+    ar: "يمكن أن يدعم تصنيف استخدام الأراضي هذا التخطيط الحضري، وإدارة البيئة، ومراقبة الزراعة، ومبادرات التنمية المستدامة.",
+  },
+  landUseUrbanDominant: {
+    en: "This predominantly urban area classification could support city planning, infrastructure development, urban heat island studies, and smart city initiatives.",
+    ar: "يمكن أن يدعم تصنيف المنطقة الحضرية السائدة هذا تخطيط المدن، وتطوير البنية التحتية، ودراسات الجزر الحرارية الحضرية، ومبادرات المدن الذكية.",
+  },
+  landUseAgricultureDominant: {
+    en: "This primarily agricultural land classification could inform crop management, irrigation planning, yield estimation, and agricultural policy development.",
+    ar: "يمكن أن يساعد تصنيف الأراضي الزراعية الرئيسية هذا في إدارة المحاصيل، وتخطيط الري، وتقدير المحصول، وتطوير السياسات الزراعية.",
+  },
+  landUseForestDominant: {
+    en: "This forest-dominated classification could support forest management, biodiversity conservation, carbon sequestration assessment, and wildfire prevention planning.",
+    ar: "يمكن أن يدعم تصنيف الغابات المهيمنة هذا إدارة الغابات، والحفاظ على التنوع البيولوجي، وتقييم احتجاز الكربون، وتخطيط الوقاية من حرائق الغابات.",
+  },
+  landUseWaterDominant: {
+    en: "This water-dominated classification could inform watershed management, coastal planning, flood risk assessment, and water resource conservation.",
+    ar: "يمكن أن يساعد تصنيف المياه المهيمنة هذا في إدارة مستجمعات المياه، والتخطيط الساحلي، وتقييم مخاطر الفيضانات، والحفاظ على موارد المياه.",
+  },
+  landUseBarrenDominant: {
+    en: "This predominantly barren land classification could support desertification monitoring, land rehabilitation planning, and geological studies.",
+    ar: "يمكن أن يدعم تصنيف الأراضي الجرداء السائدة هذا مراقبة التصحر، وتخطيط إعادة تأهيل الأراضي، والدراسات الجيولوجية.",
+  },
+  landUseDiverse: {
+    en: "This highly diverse land use classification could inform integrated landscape management, ecosystem service assessment, and sustainable development planning.",
+    ar: "يمكن أن يساعد تصنيف استخدام الأراضي المتنوع للغاية هذا في الإدارة المتكاملة للمناظر الطبيعية، وتقييم خدمات النظام البيئي، وتخطيط التنمية المستدامة.",
+  },
+
+  vegetationTypeExplanation: {
+    en: "Vegetation analysis detects plant life and assesses its health based on spectral characteristics, useful for agriculture, forestry, and environmental monitoring.",
+    ar: "يكتشف تحليل الغطاء النباتي الحياة النباتية ويقيم صحتها بناءً على الخصائص الطيفية، مفيد للزراعة والغابات ومراقبة البيئة.",
+  },
+  waterTypeExplanation: {
+    en: "Water analysis identifies water bodies and classifies them by depth and clarity, useful for flood monitoring, coastal studies, and water resource management.",
+    ar: "يحدد تحليل المياه المسطحات المائية ويصنفها حسب العمق والوضوح، مفيد لمراقبة الفيضانات ودراسات السواحل وإدارة موارد المياه.",
+  },
+  urbanTypeExplanation: {
+    en: "Urban analysis detects built-up areas and categorizes them by density and use, useful for urban planning, development monitoring, and population studies.",
+    ar: "يكتشف التحليل الحضري المناطق المبنية ويصنفها حسب الكثافة والاستخدام، مفيد للتخطيط الحضري ومراقبة التنمية ودراسات السكان.",
+  },
+  cloudTypeExplanation: {
+    en: "Cloud analysis identifies cloud cover and types, useful for assessing image quality for earth observation and meteorological studies.",
+    ar: "يحدد تحليل السحب الغطاء السحابي وأنواعه، مفيد لتقييم جودة الصورة للمراقبة الأرضية والدراسات الجوية.",
+  },
+  defaultTypeExplanation: {
+    en: "Analysis of features in satellite imagery using spectral and spatial characteristics.",
+    ar: "تحليل الميزات في صور الأقمار الصناعية باستخدام الخصائص الطيفية والمكانية.",
   },
 };
 

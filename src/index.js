@@ -115,8 +115,12 @@ app.post("/api/upload", upload.single("image"), (req, res) => {
 app.post("/api/analyze", async (req, res) => {
   try {
     const { imageUrl, featureType } = req.body;
+    console.log("=== ANALYZE REQUEST ===");
+    console.log("Received analyze request for feature type:", featureType);
+    console.log("Image URL:", imageUrl);
 
     if (!imageUrl) {
+      console.log("Error: Image URL is required");
       return res.status(400).json({ error: "Image URL is required" });
     }
 
@@ -126,19 +130,73 @@ app.post("/api/analyze", async (req, res) => {
     if (imageUrl.startsWith("/")) {
       // Local file path
       const filePath = path.join(__dirname, "../public", imageUrl);
+      console.log("Processing local image:", filePath);
       processedImage = await processLocalImage(filePath);
     } else {
       // Remote URL
+      console.log("Processing remote image:", imageUrl);
       processedImage = await processImage(imageUrl);
     }
 
+    console.log(
+      "Image processed successfully, buffer size:",
+      processedImage.length
+    );
+
     // Count features based on the specified type
+    console.log("Calling countFeatures with feature type:", featureType);
     const results = await countFeatures(processedImage, featureType);
+    console.log("Analysis completed successfully");
+
+    // Log a sample of the results to verify what we're sending back
+    console.log("=== ANALYSIS RESULTS SAMPLE ===");
+    const resultsSample = {};
+    Object.keys(results)
+      .slice(0, 10)
+      .forEach((key) => {
+        resultsSample[key] = results[key];
+      });
+    console.log(JSON.stringify(resultsSample, null, 2));
+
+    // If it's the water analyzer, check if our new properties exist
+    if (featureType === "water") {
+      console.log("=== WATER ANALYZER NEW PROPERTIES CHECK ===");
+      const waterProps = [
+        "detailedWaterType",
+        "waterQualityIndex",
+        "temperatureCategory",
+        "seasonalCharacteristics",
+      ];
+      waterProps.forEach((prop) => {
+        console.log(`${prop}: ${results[prop] ? "EXISTS" : "MISSING"}`);
+      });
+    }
+
+    // If it's the vegetation analyzer, check if our new properties exist
+    if (featureType === "vegetation") {
+      console.log("=== VEGETATION ANALYZER NEW PROPERTIES CHECK ===");
+      const vegProps = [
+        "predominantVegetationType",
+        "densityCategory",
+        "ecologicalHealthScore",
+        "fireRiskCategory",
+      ];
+      vegProps.forEach((prop) => {
+        console.log(`${prop}: ${results[prop] ? "EXISTS" : "MISSING"}`);
+      });
+    }
 
     res.json(results);
   } catch (error) {
     console.error("Error analyzing image:", error);
-    res.status(500).json({ error: "Failed to analyze image" });
+    console.error("Error details:", {
+      message: error.message,
+      stack: error.stack,
+      name: error.name,
+    });
+    res
+      .status(500)
+      .json({ error: "Failed to analyze image: " + error.message });
   }
 });
 

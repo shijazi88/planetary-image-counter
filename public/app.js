@@ -183,6 +183,81 @@ const translations = {
     footerText: "Developed by",
     footerText2:
       "using Microsoft's Planetary Computer API. This is a technology demonstration project.",
+
+    // New statistics explanations for water analyzer
+    waterQualityIndexExplanation:
+      "A 0-100 scale indicating water quality based on turbidity and clarity. Higher values indicate better quality.",
+    detailedWaterTypeExplanation:
+      "More detailed classification of the water body based on characteristics like turbidity, depth, and shoreline.",
+    temperatureIndexExplanation:
+      "Relative water temperature estimation on a 0-100 scale based on spectral characteristics.",
+    temperatureCategoryExplanation:
+      "Classification of the water body's relative temperature (cool, moderate, warm).",
+    coolWaterPercentageExplanation:
+      "Percentage of water classified as cool temperature (typically deeper or shaded areas).",
+    seasonalCharacteristicsExplanation:
+      "Estimated seasonal characteristics of the water body based on temperature patterns and water quality.",
+    waterQualityCategoryExplanation:
+      "Classification of water quality from Poor to Excellent based on turbidity, clarity, and spectral analysis.",
+
+    // New statistics explanations for vegetation analyzer
+    predominantVegetationTypeExplanation:
+      "The most common type of vegetation identified in the image based on spectral characteristics.",
+    densityCategoryExplanation:
+      "Classification of vegetation density from Sparse to Very Dense based on canopy coverage analysis.",
+    densityValueExplanation:
+      "Numerical value representing vegetation density (0-100). Higher values indicate denser vegetation.",
+    ecologicalHealthScoreExplanation:
+      "Score (0-100) indicating overall ecological health based on vegetation diversity and condition.",
+    fireRiskExplanation:
+      "Assessment of wildfire risk based on vegetation dryness and density.",
+    fireRiskScoreExplanation:
+      "Numerical score (0-100) of fire risk. Higher values indicate greater risk.",
+    growthStageExplanation:
+      "Estimated seasonal growth stage of vegetation (early, peak, senescence) based on spectral signatures.",
+
+    // New category labels
+    waterQualityCategory: "Water Quality",
+    temperatureCategory: "Temperature Metrics",
+    seasonalityCategory: "Seasonal Patterns",
+    vegetationTypeCategory: "Vegetation Types",
+    densityCategory: "Density Analysis",
+    fireRiskCategory: "Fire Risk Assessment",
+
+    // Water metric labels
+    waterQualityIndex: "Water Quality Index",
+    detailedWaterType: "Detailed Water Type",
+    temperatureIndex: "Temperature Index",
+    temperatureCategory: "Temperature Category",
+    coolWaterPercentage: "Cool Water Coverage",
+    seasonalCharacteristics: "Seasonal Pattern",
+    waterQualityCategory: "Water Quality Category",
+
+    // Vegetation metric labels
+    predominantVegetationType: "Predominant Vegetation Type",
+    densityCategory: "Vegetation Density",
+    densityValue: "Density Value",
+    ecologicalHealthScore: "Ecological Health Score",
+    fireRiskCategory: "Fire Risk",
+    fireRiskScore: "Fire Risk Score",
+    growthStage: "Growth Stage",
+
+    // Additional water metric labels
+    waterBodyType: "Water Body Type",
+    shorelineIndex: "Shoreline Complexity",
+    coverageCategory: "Coverage Category",
+    moderateWaterPercentage: "Moderate Temperature Coverage",
+    warmWaterPercentage: "Warm Water Coverage",
+
+    // Additional vegetation metric labels
+    vegetationCount: "Vegetation Pixels",
+    vegetationPercentage: "Vegetation Coverage",
+    healthyPercentage: "Healthy Vegetation",
+    moderatePercentage: "Moderate Vegetation",
+    stressedPercentage: "Stressed Vegetation",
+    darkGreenPercentage: "Forest/Dense Vegetation",
+    brightGreenPercentage: "Crops/Grassland",
+    yellowGreenPercentage: "Shrubland/Dry Vegetation",
   },
   ar: {
     appTitle: "عداد ميزات الصور الكوكبية",
@@ -327,6 +402,129 @@ const translations = {
     footerText: "تم التطوير بواسطة",
     footerText2:
       "باستخدام واجهة برمجة حاسوب مايكروسوفت الكوكبي. هذا مشروع عرض تقني.",
+
+    // New statistics explanations for water analyzer
+    waterQualityIndexExplanation:
+      "مقياس من 0-100 يشير إلى جودة المياه بناءً على العكارة والوضوح. القيم الأعلى تشير إلى جودة أفضل.",
+    detailedWaterTypeExplanation:
+      "تصنيف أكثر تفصيلاً لجسم المياه استنادًا إلى خصائص مثل العكارة والعمق والساحل.",
+    temperatureIndexExplanation:
+      "تقدير درجة حرارة المياه النسبية على مقياس 0-100 استنادًا إلى الخصائص الطيفية.",
+    temperatureCategoryExplanation:
+      "تصنيف درجة حرارة المسطح المائي النسبية (بارد، معتدل، دافئ).",
+    coolWaterPercentageExplanation:
+      "نسبة المياه المصنفة على أنها ذات درجة حرارة باردة (عادة ً المناطق الأعمق أو المظللة).",
+    seasonalCharacteristicsExplanation:
+      "الخصائص الموسمية المقدرة للمسطح المائي استنادًا إلى أنماط درجة الحرارة وجودة المياه.",
+    waterQualityCategoryExplanation:
+      "تصنيف جودة المياه من رديئة إلى ممتازة استنادًا إلى العكارة والوضوح والتحليل الطيفي.",
+    moderateWaterPercentageExplanation:
+      "نسبة المياه المصنفة كدرجة حرارة معتدلة.",
+    warmWaterPercentageExplanation:
+      "نسبة المياه المصنفة كدرجة حرارة دافئة (عادة في المناطق الضحلة أو المعرضة للشمس).",
+    seasonalCharacteristicsExplanation:
+      "النمط الموسمي المقدر بناءً على درجة حرارة المياه وخصائص الوضوح.",
+    pollutionRiskCategoryExplanation:
+      "تقييم مخاطر التلوث المحتملة بناءً على مقاييس جودة المياه.",
+    avgTurbidityExplanation:
+      "متوسط مستوى العكارة في المسطح المائي. القيم الأعلى تشير إلى المزيد من الجسيمات العالقة.",
+
+    // New statistics explanations for vegetation analyzer
+    predominantVegetationTypeExplanation:
+      "النوع الأكثر شيوعًا من الغطاء النباتي المحدد في الصورة استنادًا إلى الخصائص الطيفية.",
+    densityCategoryExplanation:
+      "تصنيف كثافة الغطاء النباتي من متناثر إلى كثيف جدًا استنادًا إلى تحليل تغطية المظلة.",
+    densityValueExplanation:
+      "قيمة رقمية تمثل كثافة الغطاء النباتي (0-100). القيم الأعلى تشير إلى غطاء نباتي أكثر كثافة.",
+    ecologicalHealthScoreExplanation:
+      "درجة (0-100) تشير إلى الصحة البيئية العامة استنادًا إلى تنوع وحالة الغطاء النباتي.",
+    fireRiskExplanation:
+      "تقييم مخاطر الحرائق البرية استنادًا إلى جفاف وكثافة الغطاء النباتي.",
+    fireRiskScoreExplanation:
+      "درجة رقمية (0-100) لمخاطر الحرائق. القيم الأعلى تشير إلى مخاطر أكبر.",
+    growthStageExplanation:
+      "مرحلة النمو الموسمية المقدرة للغطاء النباتي (مبكرة، ذروة، شيخوخة) استنادًا إلى البصمات الطيفية.",
+
+    // New category labels
+    waterQualityCategory: "جودة المياه",
+    temperatureCategory: "مقاييس درجة الحرارة",
+    seasonalityCategory: "الأنماط الموسمية",
+    vegetationTypeCategory: "أنواع الغطاء النباتي",
+    densityCategory: "تحليل الكثافة",
+    fireRiskCategory: "تقييم مخاطر الحرائق",
+
+    // Water metric labels
+    waterQualityIndex: "مؤشر جودة المياه",
+    detailedWaterType: "نوع المياه التفصيلي",
+    temperatureIndex: "مؤشر درجة الحرارة",
+    temperatureCategory: "فئة درجة الحرارة",
+    coolWaterPercentage: "نسبة المياه الباردة",
+    seasonalCharacteristics: "النمط الموسمي",
+    waterQualityCategory: "فئة جودة المياه",
+
+    // Vegetation metric labels
+    predominantVegetationType: "نوع الغطاء النباتي السائد",
+    densityCategory: "كثافة الغطاء النباتي",
+    densityValue: "قيمة الكثافة",
+    ecologicalHealthScore: "درجة الصحة البيئية",
+    fireRiskCategory: "مخاطر الحرائق",
+    fireRiskScore: "درجة مخاطر الحرائق",
+    growthStage: "مرحلة النمو",
+
+    // Additional water metric labels
+    waterBodyType: "نوع المسطح المائي",
+    shorelineIndex: "تعقيد خط الساحل",
+    coverageCategory: "فئة التغطية",
+    moderateWaterPercentage: "تغطية درجة حرارة معتدلة",
+    warmWaterPercentage: "تغطية المياه الدافئة",
+
+    // Additional vegetation metric labels
+    vegetationCount: "بكسلات الغطاء النباتي",
+    vegetationPercentage: "تغطية الغطاء النباتي",
+    healthyPercentage: "الغطاء النباتي الصحي",
+    moderatePercentage: "الغطاء النباتي المعتدل",
+    stressedPercentage: "الغطاء النباتي المُجهد",
+    darkGreenPercentage: "الغابات/الغطاء النباتي الكثيف",
+    brightGreenPercentage: "المحاصيل/المروج",
+    yellowGreenPercentage: "الأراضي الشجيرية/الغطاء النباتي الجاف",
+  },
+};
+
+// Add category labels - these determine the headings in the results UI
+const categoryLabels = {
+  en: {
+    basic: "Basic Information",
+    coverage: "Coverage Statistics",
+    classification: "Feature Classification",
+    waterType: "Water Type Analysis",
+    vegetationType: "Vegetation Type Analysis",
+    waterQuality: "Water Quality Assessment",
+    health: "Health Assessment",
+    density: "Density Analysis",
+    temperature: "Temperature Analysis",
+    urbanType: "Urban Development",
+    shoreline: "Shoreline Analysis",
+    seasonality: "Seasonal Patterns",
+    fireRisk: "Fire Risk Assessment",
+    index: "Statistical Indices",
+    other: "Additional Metrics",
+  },
+  ar: {
+    basic: "معلومات أساسية",
+    coverage: "إحصائيات التغطية",
+    classification: "تصنيف الميزات",
+    waterType: "تحليل نوع المياه",
+    vegetationType: "تحليل نوع الغطاء النباتي",
+    waterQuality: "تقييم جودة المياه",
+    health: "تقييم الصحة",
+    density: "تحليل الكثافة",
+    temperature: "تحليل درجة الحرارة",
+    urbanType: "التطور الحضري",
+    shoreline: "تحليل الساحل",
+    seasonality: "الأنماط الموسمية",
+    fireRisk: "تقييم مخاطر الحرائق",
+    index: "المؤشرات الإحصائية",
+    other: "مقاييس إضافية",
   },
 };
 
@@ -454,18 +652,20 @@ function unhighlight(e) {
   fileDropArea.classList.remove("is-active");
 }
 
-// Show appropriate feature description based on selected feature type
+// Update feature description based on selected feature type
 function updateFeatureDescription() {
-  // Hide all descriptions first
-  document.querySelectorAll(".analyzer-description").forEach((desc) => {
+  const featureType = document.getElementById("feature-type").value;
+  const descriptions = document.querySelectorAll(".analyzer-description");
+
+  // Hide all descriptions
+  descriptions.forEach((desc) => {
     desc.classList.add("hidden");
   });
 
   // Show the selected feature description
-  const selectedFeature = featureTypeSelect.value;
-  const descElement = document.getElementById(`${selectedFeature}-description`);
-  if (descElement) {
-    descElement.classList.remove("hidden");
+  const selectedDesc = document.getElementById(`${featureType}-description`);
+  if (selectedDesc) {
+    selectedDesc.classList.remove("hidden");
   }
 }
 
@@ -745,6 +945,8 @@ async function handleAnalyze() {
 
     // Get feature type
     const featureType = featureTypeSelect.value;
+    console.log("Analyzing image with feature type:", featureType);
+    console.log("Image URL:", selectedImageUrl);
 
     // Make API request
     const response = await fetch("/api/analyze", {
@@ -758,7 +960,9 @@ async function handleAnalyze() {
       }),
     });
 
+    console.log("Response status:", response.status);
     const data = await response.json();
+    console.log("Response data received:", data.error ? "Error" : "Success");
 
     if (data.error) {
       throw new Error(data.error);
@@ -1038,31 +1242,21 @@ function displayAnalysisResults(data) {
     statsByCategory[category].push(stat);
   });
 
-  // Category labels
-  const categoryLabels = {
-    basic: translations[currentLang].basicCategory || "Basic Information",
-    coverage:
-      translations[currentLang].coverageCategory || "Coverage Statistics",
-    health: translations[currentLang].healthCategory || "Health Indicators",
-    waterType: translations[currentLang].waterTypeCategory || "Water Types",
-    urbanType: translations[currentLang].urbanTypeCategory || "Urban Zones",
-    shoreline:
-      translations[currentLang].shorelineCategory || "Shoreline Metrics",
-    classification:
-      translations[currentLang].classificationCategory || "Classifications",
-    index: translations[currentLang].indexCategory || "Index Values",
-    other: translations[currentLang].otherCategory || "Other Metrics",
-  };
-
   // Order of categories to display
   const categoryOrder = [
     "basic",
     "coverage",
     "classification",
     "waterType",
+    "vegetationType",
+    "waterQuality",
     "health",
+    "density",
+    "temperature",
     "urbanType",
     "shoreline",
+    "seasonality",
+    "fireRisk",
     "index",
     "other",
   ];
@@ -1077,7 +1271,7 @@ function displayAnalysisResults(data) {
       // Add category heading
       const categoryHeading = document.createElement("h4");
       categoryHeading.className = "category-heading";
-      categoryHeading.textContent = categoryLabels[category];
+      categoryHeading.textContent = getCategoryLabel(category);
       categorySection.appendChild(categoryHeading);
 
       // Create metrics grid for this category
@@ -1244,6 +1438,130 @@ function populateFeatureMetrics(data, stats) {
           category: "classification",
         });
       }
+
+      // New vegetation type metrics
+      if (data.predominantVegetationType) {
+        stats.push({
+          label:
+            translations[currentLang].predominantVegetationType ||
+            "Predominant Vegetation Type",
+          value: data.predominantVegetationType,
+          explanation:
+            translations[currentLang].predominantVegetationTypeExplanation ||
+            "The most common type of vegetation identified in the image.",
+          category: "vegetationType",
+        });
+      }
+
+      // Vegetation color metrics
+      if (data.darkGreenPercentage) {
+        stats.push({
+          label:
+            translations[currentLang].darkGreenPercentage ||
+            "Forest/Dense Vegetation",
+          value: `${data.darkGreenPercentage}%`,
+          explanation:
+            translations[currentLang].darkGreenPercentageExplanation ||
+            "Percentage of vegetation appearing as dark green, typically forests or dense vegetation.",
+          category: "vegetationType",
+        });
+      }
+      if (data.brightGreenPercentage) {
+        stats.push({
+          label:
+            translations[currentLang].brightGreenPercentage ||
+            "Crops/Grassland",
+          value: `${data.brightGreenPercentage}%`,
+          explanation:
+            translations[currentLang].brightGreenPercentageExplanation ||
+            "Percentage of vegetation appearing as bright green, typically crops or grasslands.",
+          category: "vegetationType",
+        });
+      }
+      if (data.yellowGreenPercentage) {
+        stats.push({
+          label:
+            translations[currentLang].yellowGreenPercentage ||
+            "Shrubland/Dry Vegetation",
+          value: `${data.yellowGreenPercentage}%`,
+          explanation:
+            translations[currentLang].yellowGreenPercentageExplanation ||
+            "Percentage of vegetation appearing as yellow-green, typically shrublands or dry vegetation.",
+          category: "vegetationType",
+        });
+      }
+
+      // Density metrics - NEW
+      if (data.densityCategory) {
+        stats.push({
+          label:
+            translations[currentLang].densityCategory || "Vegetation Density",
+          value: data.densityCategory,
+          explanation:
+            translations[currentLang].densityCategoryExplanation ||
+            "Classification of vegetation density from Sparse to Very Dense.",
+          category: "density",
+        });
+      }
+      if (data.densityValue) {
+        stats.push({
+          label: translations[currentLang].densityValue || "Density Value",
+          value: data.densityValue,
+          explanation:
+            translations[currentLang].densityValueExplanation ||
+            "Numerical value representing vegetation density (0-100).",
+          category: "density",
+        });
+      }
+
+      // Ecological health - NEW
+      if (data.ecologicalHealthScore) {
+        stats.push({
+          label:
+            translations[currentLang].ecologicalHealthScore ||
+            "Ecological Health Score",
+          value: data.ecologicalHealthScore,
+          explanation:
+            translations[currentLang].ecologicalHealthScoreExplanation ||
+            "Score (0-100) indicating overall ecological health based on vegetation diversity and condition.",
+          category: "health",
+        });
+      }
+
+      // Fire risk - NEW
+      if (data.fireRiskCategory) {
+        stats.push({
+          label: translations[currentLang].fireRiskCategory || "Fire Risk",
+          value: data.fireRiskCategory,
+          explanation:
+            translations[currentLang].fireRiskExplanation ||
+            "Assessment of wildfire risk based on vegetation dryness and density.",
+          category: "fireRisk",
+        });
+      }
+      if (data.fireRiskScore) {
+        stats.push({
+          label: translations[currentLang].fireRiskScore || "Fire Risk Score",
+          value: data.fireRiskScore,
+          explanation:
+            translations[currentLang].fireRiskScoreExplanation ||
+            "Numerical score (0-100) of fire risk. Higher values indicate greater risk.",
+          category: "fireRisk",
+        });
+      }
+
+      // Seasonal growth - NEW
+      if (data.growthStage) {
+        stats.push({
+          label: translations[currentLang].growthStage || "Growth Stage",
+          value: data.growthStage,
+          explanation:
+            translations[currentLang].growthStageExplanation ||
+            "Estimated seasonal growth stage of vegetation (early, peak, senescence).",
+          category: "seasonality",
+        });
+      }
+
       break;
 
     case "water":
@@ -1269,53 +1587,6 @@ function populateFeatureMetrics(data, stats) {
         });
       }
 
-      // Water type metrics
-      if (data.deepWaterPercentage) {
-        stats.push({
-          label: translations[currentLang].deepWaterPercentage || "Deep Water",
-          value: `${data.deepWaterPercentage}%`,
-          explanation:
-            translations[currentLang].deepWaterPercentageExplanation ||
-            "The percentage of water classified as deep (dark blue in visualization).",
-          category: "waterType",
-        });
-      }
-      if (data.shallowWaterPercentage) {
-        stats.push({
-          label:
-            translations[currentLang].shallowWaterPercentage || "Shallow Water",
-          value: `${data.shallowWaterPercentage}%`,
-          explanation:
-            translations[currentLang].shallowWaterPercentageExplanation ||
-            "The percentage of water classified as shallow (medium blue in visualization).",
-          category: "waterType",
-        });
-      }
-      if (data.turbidWaterPercentage) {
-        stats.push({
-          label:
-            translations[currentLang].turbidWaterPercentage || "Turbid Water",
-          value: `${data.turbidWaterPercentage}%`,
-          explanation:
-            translations[currentLang].turbidWaterPercentageExplanation ||
-            "The percentage of water classified as turbid/sediment-laden (light blue-green in visualization).",
-          category: "waterType",
-        });
-      }
-
-      // Shoreline metrics
-      if (data.shorelineIndex) {
-        stats.push({
-          label:
-            translations[currentLang].shorelineIndex || "Shoreline Complexity",
-          value: data.shorelineIndex,
-          explanation:
-            translations[currentLang].shorelineIndexExplanation ||
-            "A relative measure of shoreline complexity. Higher values indicate more complex shorelines with more inlets and peninsulas.",
-          category: "shoreline",
-        });
-      }
-
       // Classification metrics
       if (data.waterBodyType) {
         stats.push({
@@ -1323,92 +1594,117 @@ function populateFeatureMetrics(data, stats) {
           value: data.waterBodyType,
           explanation:
             translations[currentLang].waterBodyTypeExplanation ||
-            "Classification of the water feature (ocean, lake, river, etc.).",
+            "Classification of the type of water body detected.",
           category: "classification",
         });
       }
-      if (data.clarityCategory) {
+
+      // Detailed water type - NEW
+      if (data.detailedWaterType) {
         stats.push({
-          label: translations[currentLang].clarityCategory || "Water Clarity",
-          value: data.clarityCategory,
+          label:
+            translations[currentLang].detailedWaterType ||
+            "Detailed Water Type",
+          value: data.detailedWaterType,
           explanation:
-            translations[currentLang].clarityCategoryExplanation ||
-            "Overall clarity assessment of the water bodies (clear, turbid, mixed).",
-          category: "classification",
+            translations[currentLang].detailedWaterTypeExplanation ||
+            "More detailed classification of the water body based on characteristics like turbidity, depth, and shoreline.",
+          category: "waterType",
         });
       }
+
+      // Water quality metrics - NEW
+      if (data.waterQualityIndex) {
+        stats.push({
+          label:
+            translations[currentLang].waterQualityIndex ||
+            "Water Quality Index",
+          value: data.waterQualityIndex,
+          explanation:
+            translations[currentLang].waterQualityIndexExplanation ||
+            "A 0-100 scale indicating water quality based on turbidity and clarity. Higher values indicate better quality.",
+          category: "waterQuality",
+        });
+      }
+      if (data.waterQualityCategory) {
+        stats.push({
+          label:
+            translations[currentLang].waterQualityCategory ||
+            "Water Quality Category",
+          value: data.waterQualityCategory,
+          explanation:
+            translations[currentLang].waterQualityCategoryExplanation ||
+            "Classification of water quality from Poor to Excellent.",
+          category: "waterQuality",
+        });
+      }
+
+      // Temperature metrics - NEW
+      if (data.temperatureIndex) {
+        stats.push({
+          label:
+            translations[currentLang].temperatureIndex || "Temperature Index",
+          value: data.temperatureIndex,
+          explanation:
+            translations[currentLang].temperatureIndexExplanation ||
+            "Relative water temperature estimation on a 0-100 scale based on spectral characteristics.",
+          category: "temperature",
+        });
+      }
+      if (data.temperatureCategory) {
+        stats.push({
+          label:
+            translations[currentLang].temperatureCategory ||
+            "Temperature Category",
+          value: data.temperatureCategory,
+          explanation:
+            translations[currentLang].temperatureCategoryExplanation ||
+            "Classification of the water body's relative temperature (cool, moderate, warm).",
+          category: "temperature",
+        });
+      }
+      if (data.coolWaterPercentage) {
+        stats.push({
+          label:
+            translations[currentLang].coolWaterPercentage ||
+            "Cool Water Coverage",
+          value: `${data.coolWaterPercentage}%`,
+          explanation:
+            translations[currentLang].coolWaterPercentageExplanation ||
+            "Percentage of water classified as cool temperature.",
+          category: "temperature",
+        });
+      }
+
+      // Seasonality - NEW
+      if (data.seasonalCharacteristics) {
+        stats.push({
+          label:
+            translations[currentLang].seasonalCharacteristics ||
+            "Seasonal Pattern",
+          value: data.seasonalCharacteristics,
+          explanation:
+            translations[currentLang].seasonalCharacteristicsExplanation ||
+            "Estimated seasonal characteristics of the water body.",
+          category: "seasonality",
+        });
+      }
+
       break;
 
     case "urban":
-      // Coverage metrics
-      if (data.urbanCount) {
-        stats.push({
-          label: translations[currentLang].urbanCount || "Urban Pixels",
-          value: numberWithCommas(data.urbanCount),
-          explanation:
-            translations[currentLang].urbanCountExplanation ||
-            "The number of pixels identified as urban.",
-          category: "coverage",
-        });
-      }
-      if (data.urbanPercentage) {
-        stats.push({
-          label: translations[currentLang].urbanPercentage || "Urban Coverage",
-          value: `${data.urbanPercentage}%`,
-          explanation:
-            translations[currentLang].urbanPercentageExplanation ||
-            "The percentage of the image covered by urban features.",
-          category: "coverage",
-        });
-      }
-
-      // Urban type metrics
-      if (data.denseUrbanPercentage) {
-        stats.push({
-          label:
-            translations[currentLang].denseUrbanPercentage || "Dense Urban",
-          value: `${data.denseUrbanPercentage}%`,
-          explanation:
-            translations[currentLang].denseUrbanPercentageExplanation ||
-            "The percentage of urban areas classified as dense (red in visualization).",
-          category: "urbanType",
-        });
-      }
-      if (data.suburbanPercentage) {
-        stats.push({
-          label: translations[currentLang].suburbanPercentage || "Suburban",
-          value: `${data.suburbanPercentage}%`,
-          explanation:
-            translations[currentLang].suburbanPercentageExplanation ||
-            "The percentage of urban areas classified as suburban (orange in visualization).",
-          category: "urbanType",
-        });
-      }
-      if (data.industrialPercentage) {
-        stats.push({
-          label: translations[currentLang].industrialPercentage || "Industrial",
-          value: `${data.industrialPercentage}%`,
-          explanation:
-            translations[currentLang].industrialPercentageExplanation ||
-            "The percentage of urban areas classified as industrial (purple in visualization).",
-          category: "urbanType",
-        });
-      }
-      if (data.roadPercentage) {
-        stats.push({
-          label: translations[currentLang].roadPercentage || "Road Network",
-          value: `${data.roadPercentage}%`,
-          explanation:
-            translations[currentLang].roadPercentageExplanation ||
-            "The percentage of urban areas classified as road networks (gray in visualization).",
-          category: "urbanType",
-        });
-      }
-      // ... rest of urban metrics
+      // Continue with existing urban metrics...
+      // ... existing code ...
       break;
 
     case "clouds":
-      // ... cloud metrics with categories
+      // Continue with existing cloud metrics...
+      // ... existing code ...
+      break;
+
+    case "landUse":
+      // Continue with existing landUse metrics...
+      // ... existing code ...
       break;
   }
 }
@@ -1428,6 +1724,7 @@ function getFeatureTypeExplanation(featureType) {
     clouds:
       translations[currentLang].cloudTypeExplanation ||
       "Cloud analysis identifies cloud cover and types, useful for assessing image quality for earth observation and meteorological studies.",
+    // landUse case removed
   };
 
   return (
@@ -1459,6 +1756,19 @@ function generateKeyFindings(data) {
         findings.push(coverageText);
       }
 
+      // Vegetation type
+      if (data.predominantVegetationType) {
+        let typeText =
+          keyFindingsTranslations.vegetationType?.[currentLang] ||
+          `The predominant vegetation type is ${data.predominantVegetationType.toLowerCase()}.`;
+        findings.push(
+          typeText.replace(
+            "{type}",
+            data.predominantVegetationType.toLowerCase()
+          )
+        );
+      }
+
       // Vegetation health
       if (data.healthStatus) {
         let healthText =
@@ -1485,6 +1795,36 @@ function generateKeyFindings(data) {
           .replace("{moderate}", data.moderatePercentage)
           .replace("{stressed}", data.stressedPercentage);
         findings.push(compositionText);
+      }
+
+      // Ecological health score
+      if (data.ecologicalHealthScore) {
+        let ecoHealthText =
+          keyFindingsTranslations.ecologicalHealth?.[currentLang] ||
+          `The ecological health score is ${data.ecologicalHealthScore} out of 100.`;
+        findings.push(
+          ecoHealthText.replace("{score}", data.ecologicalHealthScore)
+        );
+      }
+
+      // Growth stage
+      if (data.growthStage) {
+        let growthText =
+          keyFindingsTranslations.growthStage?.[currentLang] ||
+          `The vegetation appears to be in the ${data.growthStage.toLowerCase()} phase.`;
+        findings.push(
+          growthText.replace("{stage}", data.growthStage.toLowerCase())
+        );
+      }
+
+      // Fire risk if significant
+      if (data.fireRiskCategory && data.fireRiskCategory !== "Low Risk") {
+        let fireRiskText =
+          keyFindingsTranslations.fireRisk?.[currentLang] ||
+          `Fire risk assessment: ${data.fireRiskCategory.toLowerCase()}.`;
+        findings.push(
+          fireRiskText.replace("{risk}", data.fireRiskCategory.toLowerCase())
+        );
       }
 
       // NDVI interpretation
@@ -1528,13 +1868,61 @@ function generateKeyFindings(data) {
         findings.push(coverageText);
       }
 
-      // Water body type
-      if (data.waterBodyType) {
+      // Water body type - prefer detailed type if available
+      if (data.detailedWaterType) {
+        let typeText =
+          keyFindingsTranslations.detailedWaterType?.[currentLang] ||
+          `This appears to be a ${data.detailedWaterType.toLowerCase()}.`;
+        findings.push(
+          typeText.replace("{type}", data.detailedWaterType.toLowerCase())
+        );
+      } else if (data.waterBodyType) {
         let typeText =
           keyFindingsTranslations.waterBodyType[currentLang] ||
           keyFindingsTranslations.waterBodyType.en;
         typeText = typeText.replace("{type}", data.waterBodyType.toLowerCase());
         findings.push(typeText);
+      }
+
+      // Water quality index
+      if (data.waterQualityIndex) {
+        let qualityText =
+          keyFindingsTranslations.waterQuality?.[currentLang] ||
+          `Water quality index: ${data.waterQualityIndex} out of 100.`;
+        findings.push(qualityText.replace("{quality}", data.waterQualityIndex));
+
+        // Also include pollution risk if available
+        if (data.pollutionRiskCategory) {
+          let riskText =
+            keyFindingsTranslations.pollutionRisk?.[currentLang] ||
+            `Pollution risk: ${data.pollutionRiskCategory.toLowerCase()}.`;
+          findings.push(
+            riskText.replace("{risk}", data.pollutionRiskCategory.toLowerCase())
+          );
+        }
+      }
+
+      // Temperature insights
+      if (data.temperatureCategory) {
+        let tempText =
+          keyFindingsTranslations.waterTemperature?.[currentLang] ||
+          `The water temperature appears to be predominantly ${data.temperatureCategory.toLowerCase()}.`;
+        findings.push(
+          tempText.replace("{category}", data.temperatureCategory.toLowerCase())
+        );
+      }
+
+      // Seasonal patterns
+      if (data.seasonalCharacteristics) {
+        let seasonalText =
+          keyFindingsTranslations.waterSeasonal?.[currentLang] ||
+          `The water shows characteristics consistent with ${data.seasonalCharacteristics.toLowerCase()}.`;
+        findings.push(
+          seasonalText.replace(
+            "{pattern}",
+            data.seasonalCharacteristics.toLowerCase()
+          )
+        );
       }
 
       // Water composition
@@ -1614,50 +2002,16 @@ function generateKeyFindings(data) {
         findings.push(categoryText);
       }
 
-      // Urban composition
-      if (
-        data.denseUrbanPercentage ||
-        data.suburbanPercentage ||
-        data.industrialPercentage ||
-        data.roadPercentage
-      ) {
-        let components = [];
-
-        if (data.denseUrbanPercentage > 5)
-          components.push(
-            `${data.denseUrbanPercentage}% ${
-              currentLang === "ar" ? "حضري كثيف" : "dense urban"
-            }`
-          );
-        if (data.suburbanPercentage > 5)
-          components.push(
-            `${data.suburbanPercentage}% ${
-              currentLang === "ar" ? "ضواحي" : "suburban"
-            }`
-          );
-        if (data.industrialPercentage > 5)
-          components.push(
-            `${data.industrialPercentage}% ${
-              currentLang === "ar" ? "صناعي" : "industrial"
-            }`
-          );
-        if (data.roadPercentage > 5)
-          components.push(
-            `${data.roadPercentage}% ${
-              currentLang === "ar" ? "شبكات طرق" : "road networks"
-            }`
-          );
-
-        if (components.length > 0) {
-          let compositionText =
-            keyFindingsTranslations.urbanComposition[currentLang] ||
-            keyFindingsTranslations.urbanComposition.en;
-          compositionText = compositionText.replace(
-            "{components}",
-            components.join(currentLang === "ar" ? "، " : ", ")
-          );
-          findings.push(compositionText);
-        }
+      // Urban components
+      if (data.urbanComponents) {
+        let componentsText =
+          keyFindingsTranslations.urbanComposition[currentLang] ||
+          keyFindingsTranslations.urbanComposition.en;
+        componentsText = componentsText.replace(
+          "{components}",
+          data.urbanComponents
+        );
+        findings.push(componentsText);
       }
 
       // Development pattern
@@ -1675,26 +2029,29 @@ function generateKeyFindings(data) {
       // Fragmentation index
       if (data.fragmentationIndex) {
         const fragValue = parseFloat(data.fragmentationIndex);
-        let fragText;
+        let fragmentationText;
 
-        if (fragValue > 15) {
-          fragText =
+        if (fragValue > 0.7) {
+          fragmentationText =
             keyFindingsTranslations.fragmentationHighlyFragmented[
               currentLang
             ] || keyFindingsTranslations.fragmentationHighlyFragmented.en;
-        } else if (fragValue > 8) {
-          fragText =
+        } else if (fragValue > 0.3) {
+          fragmentationText =
             keyFindingsTranslations.fragmentationModeratelyFragmented[
               currentLang
             ] || keyFindingsTranslations.fragmentationModeratelyFragmented.en;
         } else {
-          fragText =
+          fragmentationText =
             keyFindingsTranslations.fragmentationCompact[currentLang] ||
             keyFindingsTranslations.fragmentationCompact.en;
         }
 
-        fragText = fragText.replace("{index}", data.fragmentationIndex);
-        findings.push(fragText);
+        fragmentationText = fragmentationText.replace(
+          "{index}",
+          data.fragmentationIndex
+        );
+        findings.push(fragmentationText);
       }
       break;
 
@@ -1735,7 +2092,7 @@ function generateKeyFindings(data) {
       }
 
       // Cloud shadows
-      if (data.shadowPercentage && parseFloat(data.shadowPercentage) > 5) {
+      if (data.shadowPercentage) {
         let shadowText =
           keyFindingsTranslations.cloudShadows[currentLang] ||
           keyFindingsTranslations.cloudShadows.en;
@@ -1744,7 +2101,7 @@ function generateKeyFindings(data) {
       }
 
       // Image usability
-      if (data.imageUsability) {
+      if (data.usabilityCategory) {
         let usabilityText =
           keyFindingsTranslations.imageUsability[currentLang] ||
           keyFindingsTranslations.imageUsability.en;
@@ -1753,6 +2110,95 @@ function generateKeyFindings(data) {
           data.imageUsability.toLowerCase()
         );
         findings.push(usabilityText);
+      }
+      break;
+
+    case "landUse":
+      // Dominant land use
+      if (data.dominantLandUse && data.landUsePercentage) {
+        let dominantText =
+          keyFindingsTranslations.landUseDominant[currentLang] ||
+          keyFindingsTranslations.landUseDominant.en;
+        dominantText = dominantText
+          .replace("{type}", data.dominantLandUse)
+          .replace(
+            "{percentage}",
+            data.landUsePercentage[data.dominantLandUse]
+          );
+        findings.push(dominantText);
+      }
+
+      // Land use diversity
+      if (data.landUseDiversity) {
+        let diversityText =
+          keyFindingsTranslations.landUseDiversity[currentLang] ||
+          keyFindingsTranslations.landUseDiversity.en;
+        diversityText = diversityText.replace("{score}", data.landUseDiversity);
+        findings.push(diversityText);
+      }
+
+      // Urban coverage
+      if (data.landUsePercentage && data.landUsePercentage.urban) {
+        let urbanText =
+          keyFindingsTranslations.landUseUrban[currentLang] ||
+          keyFindingsTranslations.landUseUrban.en;
+        urbanText = urbanText.replace(
+          "{percentage}",
+          data.landUsePercentage.urban
+        );
+        findings.push(urbanText);
+      }
+
+      // Agriculture coverage
+      if (data.landUsePercentage && data.landUsePercentage.agriculture) {
+        let agricultureText =
+          keyFindingsTranslations.landUseAgriculture[currentLang] ||
+          keyFindingsTranslations.landUseAgriculture.en;
+        agricultureText = agricultureText.replace(
+          "{percentage}",
+          data.landUsePercentage.agriculture
+        );
+        findings.push(agricultureText);
+      }
+
+      // Forest coverage
+      if (data.landUsePercentage && data.landUsePercentage.forest) {
+        let forestText =
+          keyFindingsTranslations.landUseForest[currentLang] ||
+          keyFindingsTranslations.landUseForest.en;
+        forestText = forestText.replace(
+          "{percentage}",
+          data.landUsePercentage.forest
+        );
+        findings.push(forestText);
+      }
+
+      // Water coverage
+      if (data.landUsePercentage && data.landUsePercentage.water) {
+        let waterText =
+          keyFindingsTranslations.landUseWater[currentLang] ||
+          keyFindingsTranslations.landUseWater.en;
+        waterText = waterText.replace(
+          "{percentage}",
+          data.landUsePercentage.water
+        );
+        findings.push(waterText);
+      }
+
+      // Barren land coverage
+      if (
+        data.landUsePercentage &&
+        data.landUsePercentage.barren &&
+        parseFloat(data.landUsePercentage.barren) > 5
+      ) {
+        let barrenText =
+          keyFindingsTranslations.landUseBarren[currentLang] ||
+          keyFindingsTranslations.landUseBarren.en;
+        barrenText = barrenText.replace(
+          "{percentage}",
+          data.landUsePercentage.barren
+        );
+        findings.push(barrenText);
       }
       break;
 
@@ -1784,197 +2230,6 @@ function generateKeyFindings(data) {
   }
 
   return findings;
-}
-
-// Generate practical applications based on the analysis results
-function generateApplicationInsights(data) {
-  switch (data.featureType) {
-    case "vegetation":
-      if (!data.healthStatus || !data.vegetationPercentage) {
-        return (
-          applicationInsightsTranslations.vegetationGeneric[currentLang] ||
-          applicationInsightsTranslations.vegetationGeneric.en
-        );
-      }
-
-      const vegPercentage = parseFloat(data.vegetationPercentage);
-      const healthStatus = data.healthStatus.toLowerCase();
-
-      if (vegPercentage > 70) {
-        if (healthStatus.includes("healthy")) {
-          return (
-            applicationInsightsTranslations.vegetationHighHealthy[
-              currentLang
-            ] || applicationInsightsTranslations.vegetationHighHealthy.en
-          );
-        } else if (healthStatus.includes("stress")) {
-          return (
-            applicationInsightsTranslations.vegetationHighStressed[
-              currentLang
-            ] || applicationInsightsTranslations.vegetationHighStressed.en
-          );
-        } else {
-          return (
-            applicationInsightsTranslations.vegetationHighMixed[currentLang] ||
-            applicationInsightsTranslations.vegetationHighMixed.en
-          );
-        }
-      } else if (vegPercentage > 30) {
-        if (healthStatus.includes("healthy")) {
-          return (
-            applicationInsightsTranslations.vegetationModerateHealthy[
-              currentLang
-            ] || applicationInsightsTranslations.vegetationModerateHealthy.en
-          );
-        } else {
-          return (
-            applicationInsightsTranslations.vegetationModerateStressed[
-              currentLang
-            ] || applicationInsightsTranslations.vegetationModerateStressed.en
-          );
-        }
-      } else {
-        return (
-          applicationInsightsTranslations.vegetationLow[currentLang] ||
-          applicationInsightsTranslations.vegetationLow.en
-        );
-      }
-
-    case "water":
-      if (!data.waterPercentage) {
-        return (
-          applicationInsightsTranslations.waterGeneric[currentLang] ||
-          applicationInsightsTranslations.waterGeneric.en
-        );
-      }
-
-      const waterPercentage = parseFloat(data.waterPercentage);
-      const hasClarity = data.clarityCategory ? true : false;
-
-      if (waterPercentage > 70) {
-        if (
-          hasClarity &&
-          data.clarityCategory.toLowerCase().includes("turbid")
-        ) {
-          return (
-            applicationInsightsTranslations.waterMajorTurbid[currentLang] ||
-            applicationInsightsTranslations.waterMajorTurbid.en
-          );
-        } else {
-          return (
-            applicationInsightsTranslations.waterMajorClear[currentLang] ||
-            applicationInsightsTranslations.waterMajorClear.en
-          );
-        }
-      } else if (waterPercentage > 30) {
-        if (
-          data.waterBodyType &&
-          data.waterBodyType.toLowerCase().includes("lake")
-        ) {
-          return (
-            applicationInsightsTranslations.waterLake[currentLang] ||
-            applicationInsightsTranslations.waterLake.en
-          );
-        } else if (
-          data.waterBodyType &&
-          data.waterBodyType.toLowerCase().includes("river")
-        ) {
-          return (
-            applicationInsightsTranslations.waterRiver[currentLang] ||
-            applicationInsightsTranslations.waterRiver.en
-          );
-        } else {
-          return (
-            applicationInsightsTranslations.waterGenericBody[currentLang] ||
-            applicationInsightsTranslations.waterGenericBody.en
-          );
-        }
-      } else {
-        return (
-          applicationInsightsTranslations.waterLimited[currentLang] ||
-          applicationInsightsTranslations.waterLimited.en
-        );
-      }
-
-    case "urban":
-      if (!data.urbanPercentage) {
-        return (
-          applicationInsightsTranslations.urbanGeneric[currentLang] ||
-          applicationInsightsTranslations.urbanGeneric.en
-        );
-      }
-
-      const urbanPercentage = parseFloat(data.urbanPercentage);
-      const hasPattern = data.developmentPattern ? true : false;
-
-      if (urbanPercentage > 70) {
-        if (
-          hasPattern &&
-          data.developmentPattern.toLowerCase().includes("compact")
-        ) {
-          return (
-            applicationInsightsTranslations.urbanDenseCompact[currentLang] ||
-            applicationInsightsTranslations.urbanDenseCompact.en
-          );
-        } else if (
-          hasPattern &&
-          data.developmentPattern.toLowerCase().includes("fragment")
-        ) {
-          return (
-            applicationInsightsTranslations.urbanDenseFragmented[currentLang] ||
-            applicationInsightsTranslations.urbanDenseFragmented.en
-          );
-        } else {
-          return (
-            applicationInsightsTranslations.urbanDenseGeneric[currentLang] ||
-            applicationInsightsTranslations.urbanDenseGeneric.en
-          );
-        }
-      } else if (urbanPercentage > 30) {
-        return (
-          applicationInsightsTranslations.urbanModerate[currentLang] ||
-          applicationInsightsTranslations.urbanModerate.en
-        );
-      } else {
-        return (
-          applicationInsightsTranslations.urbanLimited[currentLang] ||
-          applicationInsightsTranslations.urbanLimited.en
-        );
-      }
-
-    case "clouds":
-      if (!data.cloudPercentage) {
-        return (
-          applicationInsightsTranslations.cloudGeneric[currentLang] ||
-          applicationInsightsTranslations.cloudGeneric.en
-        );
-      }
-
-      const cloudPercentage = parseFloat(data.cloudPercentage);
-
-      if (cloudPercentage > 70) {
-        return (
-          applicationInsightsTranslations.cloudHeavy[currentLang] ||
-          applicationInsightsTranslations.cloudHeavy.en
-        );
-      } else if (cloudPercentage > 30) {
-        return (
-          applicationInsightsTranslations.cloudPartial[currentLang] ||
-          applicationInsightsTranslations.cloudPartial.en
-        );
-      } else {
-        return (
-          applicationInsightsTranslations.cloudMinimal[currentLang] ||
-          applicationInsightsTranslations.cloudMinimal.en
-        );
-      }
-
-    default:
-      return (
-        applicationInsightsTranslations.defaultApplications[currentLang] ||
-        applicationInsightsTranslations.defaultApplications.en
-      );
-  }
 }
 
 // Utility Functions
@@ -2181,3 +2436,77 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// Generate practical applications based on the analysis results
+function generateApplicationInsights(data) {
+  switch (data.featureType) {
+    case "vegetation":
+      // ... existing vegetation case ...
+      break;
+
+    case "water":
+      // ... existing water case ...
+      break;
+
+    case "urban":
+      // ... existing urban case ...
+      break;
+
+    case "clouds":
+      if (!data.cloudPercentage) {
+        return (
+          applicationInsightsTranslations.cloudGeneric[currentLang] ||
+          applicationInsightsTranslations.cloudGeneric.en
+        );
+      }
+
+      const cloudPercentage = parseFloat(data.cloudPercentage);
+
+      if (cloudPercentage > 70) {
+        return (
+          applicationInsightsTranslations.cloudHeavy[currentLang] ||
+          applicationInsightsTranslations.cloudHeavy.en
+        );
+      } else if (cloudPercentage > 30) {
+        return (
+          applicationInsightsTranslations.cloudPartial[currentLang] ||
+          applicationInsightsTranslations.cloudPartial.en
+        );
+      } else {
+        return (
+          applicationInsightsTranslations.cloudMinimal[currentLang] ||
+          applicationInsightsTranslations.cloudMinimal.en
+        );
+      }
+
+    default:
+      return (
+        applicationInsightsTranslations.defaultApplications[currentLang] ||
+        applicationInsightsTranslations.defaultApplications.en
+      );
+  }
+}
+
+// Helper function to get category label with fallbacks
+function getCategoryLabel(category) {
+  // First try using translations
+  if (
+    translations[currentLang] &&
+    translations[currentLang][category + "Category"]
+  ) {
+    return translations[currentLang][category + "Category"];
+  }
+
+  // Next try using the categoryLabels object
+  if (categoryLabels[currentLang] && categoryLabels[currentLang][category]) {
+    return categoryLabels[currentLang][category];
+  }
+
+  // Fallback to English
+  if (categoryLabels.en && categoryLabels.en[category]) {
+    return categoryLabels.en[category];
+  }
+
+  // Last resort: capitalized category name
+  return category.charAt(0).toUpperCase() + category.slice(1);
+}

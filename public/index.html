@@ -93,7 +93,6 @@
               <li data-lang-key="urbanPoint1">Urban expansion monitoring</li>
               <li data-lang-key="urbanPoint2">Infrastructure planning</li>
               <li data-lang-key="urbanPoint3">Population density estimation</li>
-              <li data-lang-key="urbanPoint4">Land use classification</li>
             </ul>
           </div>
 
@@ -316,6 +315,9 @@
               Urban Areas
             </option>
             <option value="clouds" data-lang-key="cloudsOption">Clouds</option>
+            <option value="landUse" data-lang-key="landUseOption">
+              Land Use Classification
+            </option>
           </select>
           <div id="feature-description">
             <p
@@ -354,6 +356,16 @@
               Analyzes cloud coverage in satellite imagery. Detects clouds based
               on their high brightness and spectral characteristics, classifying
               them as thick or thin and assessing image usability.
+            </p>
+            <p
+              id="landUse-description"
+              class="analyzer-description hidden"
+              data-lang-key="landUseDescription"
+            >
+              Classifies satellite imagery into different land use categories
+              including urban, agriculture, forest, water, and barren land.
+              Calculates the percentage of each land type and provides an
+              overall land use diversity score.
             </p>
           </div>
         </div>
